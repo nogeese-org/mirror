@@ -6,7 +6,7 @@ Nogeese Linux comes with it's repos.
 nogeese - Official repo for Nogeese Linux programs.
 
 bit - Handful utilities, you would normally not be able to install with pacman.
-## How to get these repos on arch linux?
+## How to get these repos on Arch Linux?
 ### nogeese
 Even tho the nogeese repo was made for Nogeese Linux, you can still get it by editing the pacman config (/etc/pacman.conf):
 
@@ -34,6 +34,6 @@ SigLevel = TrustAll
 ```
 
 ### What about Nogeese AUR?
-Check [the AUR's README]
+Check [the AUR's README](https://github.com/leon8326-nogeese/aur/README.md)
 
 
