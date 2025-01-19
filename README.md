@@ -34,6 +34,6 @@ SigLevel = TrustAll
 ```
 
 ### What about Nogeese AUR?
-Check [the AUR's README](https://github.com/leon8326-nogeese/aur/blob/main/README.md)
+Check [the AUR's README](https://github.com/leon8326-nogeese/aur/blob/main/README.md).
 
 
