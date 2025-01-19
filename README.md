@@ -16,7 +16,7 @@ Add this line:
 
 ```
 [nogeese]
-Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/nogeese
+Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/nogeese/ox/x86_64
 SigLevel = TrustAll
 ```
 
@@ -29,7 +29,7 @@ Add this line:
 
 ```
 [bit]
-Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/bit
+Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/bit/os/x86_64
 SigLevel = TrustAll
 ```
 
