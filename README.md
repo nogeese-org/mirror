@@ -16,7 +16,7 @@ Add this line:
 
 ```
 [nogeese]
-Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/nogeese/ox/x86_64
+Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/nogeese/os/x86_64
 SigLevel = TrustAll
 ```
 
@@ -36,4 +36,37 @@ SigLevel = TrustAll
 ### What about Nogeese AUR?
 Check [the AUR's README](https://github.com/leon8326-nogeese/aur/blob/main/README.md).
 
+## As a developer, how can i upload a new package on this mirror?
+PLEASE Read which repo your package should be in the "What are the repos?" section of this README.
 
+If your package doesn't fit to any of the repos, consider using the Nogeese AUR.
+
+Fork this mirror, and download the .db and .files on the repo ($repo/os/$arch) you want to have your package on, for this example we will add yay to the bit repo.
+
+In this example that would be bit/os/x86_64.
+
+Make sure it is a separate new directory with all the .db and .files in it.
+
+Now add the *.pkg.tar or *.pkg.tar.zst package onto the same directory.
+
+In this example it will be yay-*-x86_64.pkg.tar.zst.
+
+Paste this package into the same directory as all the .db and .files.
+
+Then run this command in the same directory:
+
+```
+repo-add $repo.db.tar.gz $package-*-$arch(.pkg.tar/.pkg.tar.zst)
+```
+
+In this example it will be:
+
+```
+repo-add bit.db.tar.gz yay-*-x86_64.pkg.tar.zst
+```
+
+And then delete ALL the .db and .files in the repo directory on the fork you created on github.
+
+And in the same directory click + > Upload files and drag and drop the .pkg.tar/.pkg.tar.zst and all the .db and .files, then click "Commit changes".
+
+Go to the home page of the fork and click "Contribute" follow instrustion on the screen, and wait... your package should be approved. 
