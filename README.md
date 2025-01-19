@@ -1,12 +1,12 @@
 # Nogeese Linux Mirror
 A mirror with repos exclusive for Nogeese Linux, alongside the Arch Linux repos.
 
-Nogeese Linux comes with it.
+Nogeese Linux comes with it's repos.
 ## What are the repos?
 nogeese - Official repo for Nogeese Linux programs.
 
 bit - Handful utilities, you would normally not be able to install with pacman.
-## How to get this mirror on arch linux?
+## How to get these repos on arch linux?
 ### nogeese
 Even tho the nogeese repo was made for Nogeese Linux, you can still get it by editing the pacman config (/etc/pacman.conf):
 
