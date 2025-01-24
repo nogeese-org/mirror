@@ -70,3 +70,15 @@ And then delete ALL the .db and .files in the repo directory on the fork you cre
 And in the same directory click + > Upload files and drag and drop the .pkg.tar/.pkg.tar.zst and all the .db and .files, then click "Commit changes".
 
 Go to the home page of the fork and click "Contribute" follow instrustion on the screen, and wait... your package should be approved. 
+
+# What are the architectures and what are they based on?
+
+x86_64 - Based on [Arch Linux](https://archlinux.org)
+
+x86 - Based on [Arch Linux 32](https://archlinux32.org)
+
+aarch64 & arm - Based on [Arch Linux ARM](https://archlinuxarm.org)
+
+powerpc & powerpc64 - Based on [ArchPOWER](https://archlinuxpower.org)
+
+risc-v - Based on [Arch Linux RISC-V](https://archriscv.felixc.at/)
