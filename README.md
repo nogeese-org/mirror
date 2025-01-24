@@ -71,7 +71,7 @@ And in the same directory click + > Upload files and drag and drop the .pkg.tar/
 
 Go to the home page of the fork and click "Contribute" follow instrustion on the screen, and wait... your package should be approved. 
 
-# What are the architectures and what are they based on?
+## What are the architectures and what are they based on?
 
 x86_64 - Based on [Arch Linux](https://archlinux.org)
 
