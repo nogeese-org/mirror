@@ -17,7 +17,7 @@ Add this line:
 ```
 [nogeese]
 Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/nogeese/os/x86_64
-SigLevel = TrustAll
+SigLevel = Optional TrustAll
 ```
 
 ### bit
@@ -30,7 +30,7 @@ Add this line:
 ```
 [bit]
 Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/bit/os/x86_64
-SigLevel = TrustAll
+SigLevel = Optional TrustAll
 ```
 
 ### What about Nogeese AUR?
