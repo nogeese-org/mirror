@@ -10,13 +10,20 @@ bit - Handful utilities, you would normally not be able to install with pacman.
 ### nogeese
 Even tho the nogeese repo was made for Nogeese Linux, you can still get it by editing the pacman config (/etc/pacman.conf):
 
+Before adding ANY repo run:
+
+```
+echo "arch=(ARCHITECTURE HERE)" >> ~/.bashrc
+source ~/.bashrc
+```
+
 Open "/etc/pacman.conf" in a text editor and
 
 Add this line:
 
 ```
 [nogeese]
-Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/nogeese/os/x86_64
+Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/nogeese/os/$arch
 SigLevel = Optional TrustAll
 ```
 
@@ -29,7 +36,7 @@ Add this line:
 
 ```
 [bit]
-Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/bit/os/x86_64
+Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/bit/os/$arch
 SigLevel = Optional TrustAll
 ```
 
