@@ -1,7 +1,11 @@
-# Nogeese Linux Edge Mirror
-A mirror with repos exclusive for Nogeese Linux, alongside the Arch Linux repos.
+# Nogeese Linux Unstable Mirror (DO NOT USE!!!)
+⚠️ WARNING! ⚠️
 
-Nogeese Linux comes with it's repos.
+THIS BRANCH IS FOR TESTING PURPOSES ONLY!!!
+
+I RECOMMEND YOU CHECK THE [EDGE](https://github.com/nogeese-org/mirror/blob/tree/edge) BRANCH INSTEAD.
+
+YOU HAVE BEEN WARNED!
 ## What are the repos?
 nogeese - Official repo for Nogeese Linux programs.
 
@@ -23,7 +27,7 @@ Add this line:
 
 ```
 [nogeese]
-Server = https://raw.githubusercontent.com/nogeese-org/mirror/edge/nogeese/os/$arch
+Server = https://raw.githubusercontent.com/nogeese-org/mirror/unstable/nogeese/os/$arch
 SigLevel = Optional TrustAll
 ```
 
@@ -36,7 +40,7 @@ Add this line:
 
 ```
 [bit]
-Server = https://raw.githubusercontent.com/nogeese-org/mirror/edge/bit/os/$arch
+Server = https://raw.githubusercontent.com/nogeese-org/mirror/unstable/bit/os/$arch
 SigLevel = Optional TrustAll
 ```
 
