@@ -1,4 +1,4 @@
-# Nogeese Linux Mirror
+# Nogeese Linux Stable Mirror
 A mirror with repos exclusive for Nogeese Linux, alongside the Arch Linux repos.
 
 Nogeese Linux comes with it's repos.
@@ -23,7 +23,7 @@ Add this line:
 
 ```
 [nogeese]
-Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/nogeese/os/$arch
+Server = https://raw.githubusercontent.com/nogeese-org/mirror/stable/nogeese/os/$arch
 SigLevel = Optional TrustAll
 ```
 
@@ -36,7 +36,7 @@ Add this line:
 
 ```
 [bit]
-Server = https://raw.githubusercontent.com/leon8326-nogeese/mirror/main/bit/os/$arch
+Server = https://raw.githubusercontent.com/nogeese-org/mirror/stable/bit/os/$arch
 SigLevel = Optional TrustAll
 ```
 
@@ -89,3 +89,5 @@ aarch64 & arm - Based on [Arch Linux ARM](https://archlinuxarm.org)
 powerpc & powerpc64 - Based on [ArchPOWER](https://archlinuxpower.org)
 
 risc-v - Based on [Arch Linux RISC-V](https://archriscv.felixc.at/)
+
+pod64-docker - Based on [Arch Linux Docker](https://hub.docker.com/r/archlinux/archlinux)
