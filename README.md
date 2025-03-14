@@ -90,4 +90,4 @@ powerpc & powerpc64 - Based on [ArchPOWER](https://archlinuxpower.org)
 
 risc-v - Based on [Arch Linux RISC-V](https://archriscv.felixc.at/)
 
-pod64-docker - Based on [Arch Linux Docker](https://hub.docker.com/r/archlinux/archlinux)
+pod64-docker - Based on [Arch Linux OCI](https://hub.docker.com/r/archlinux/archlinux)
