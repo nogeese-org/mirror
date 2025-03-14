@@ -3,7 +3,7 @@
 
 THIS BRANCH IS FOR TESTING PURPOSES ONLY!!!
 
-I RECOMMEND YOU CHECK THE [EDGE](https://github.com/nogeese-org/mirror/blob/tree/edge) BRANCH INSTEAD.
+I RECOMMEND YOU CHECK THE [EDGE](https://github.com/nogeese-org/mirror/tree/edge) BRANCH INSTEAD.
 
 YOU HAVE BEEN WARNED!
 ## What are the repos?
