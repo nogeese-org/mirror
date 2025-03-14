@@ -1,4 +1,4 @@
-# Nogeese Linux Mirror
+# Nogeese Linux Edge Mirror
 A mirror with repos exclusive for Nogeese Linux, alongside the Arch Linux repos.
 
 Nogeese Linux comes with it's repos.
@@ -23,7 +23,7 @@ Add this line:
 
 ```
 [nogeese]
-Server = https://raw.githubusercontent.com/nogeese-org/mirror/stable/nogeese/os/$arch
+Server = https://raw.githubusercontent.com/nogeese-org/mirror/edge/nogeese/os/$arch
 SigLevel = Optional TrustAll
 ```
 
@@ -36,7 +36,7 @@ Add this line:
 
 ```
 [bit]
-Server = https://raw.githubusercontent.com/nogeese-org/mirror/stable/bit/os/$arch
+Server = https://raw.githubusercontent.com/nogeese-org/mirror/edge/bit/os/$arch
 SigLevel = Optional TrustAll
 ```
 
