@@ -1,4 +1,4 @@
-# Nogeese Linux Mirror
+# Nogeese Linux Stable Mirror
 A mirror with repos exclusive for Nogeese Linux, alongside the Arch Linux repos.
 
 Nogeese Linux comes with it's repos.
