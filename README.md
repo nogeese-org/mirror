@@ -1,4 +1,4 @@
-# Nogeese Linux Stable Mirror
+# Nogeese Linux Mirror
 A mirror with repos exclusive for Nogeese Linux, alongside the Arch Linux repos.
 
 Nogeese Linux comes with it's repos.
@@ -76,7 +76,7 @@ And then delete ALL the .db and .files in the repo directory on the fork you cre
 
 And in the same directory click + > Upload files and drag and drop the .pkg.tar/.pkg.tar.zst and all the .db and .files, then click "Commit changes".
 
-Go to the home page of the fork and click "Contribute" follow instrustion on the screen, and wait... your package should be approved. 
+Go to the home page of the fork and click "Contribute" follow instrustion on the screen, and wait...
 
 ## What are the architectures and what are they based on?
 
