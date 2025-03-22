@@ -47,8 +47,8 @@
       });
     }
 
-    const baseUrl = 'https://mirror.leon8326.org/'; // Use mirror.leon8326.org instead of GitHub
-    const apiUrl = `${baseUrl}${currentDir}/`; 
+    const baseUrl = 'https://mirror.leon8326.org/'; // Use mirror.leon8326.org
+    const apiUrl = `${baseUrl}?dir=${encodeURIComponent(currentDir)}`; // Store browsing state in ?dir=
 
     fetch(apiUrl)
       .then(response => {
