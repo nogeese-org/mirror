@@ -19,63 +19,50 @@
   <div id="content">Loading directory contents...</div>
 
   <script>
-    // Parse the "dir" parameter from the URL, defaulting to an empty string (root)
+    const BASE_DIR = 'docs'; // Set "docs" as the home directory
+    
     const params = new URLSearchParams(window.location.search);
-    const currentDir = params.get('dir') || '';
+    let currentDir = params.get('dir') || BASE_DIR;
 
-    // Build breadcrumb navigation
+    // Breadcrumb navigation
     const breadcrumbEl = document.getElementById('breadcrumb');
-    if (currentDir) {
-      const parts = currentDir.split('/');
-      let path = '';
-      breadcrumbEl.innerHTML = '<a href="?">Home</a> / ';
+    if (currentDir === BASE_DIR) {
+      breadcrumbEl.innerHTML = '<strong>Home</strong>';
+    } else {
+      const parts = currentDir.replace(BASE_DIR + '/', '').split('/');
+      let path = BASE_DIR;
+      breadcrumbEl.innerHTML = `<a href="?dir=${BASE_DIR}">Home</a> / `;
       parts.forEach((part, index) => {
-        path += (index === 0 ? part : '/' + part);
+        path += '/' + part;
         if (index < parts.length - 1) {
           breadcrumbEl.innerHTML += `<a href="?dir=${encodeURIComponent(path)}">${part}</a> / `;
         } else {
           breadcrumbEl.innerHTML += `<strong>${part}</strong>`;
         }
       });
-    } else {
-      breadcrumbEl.innerHTML = '<strong>Home</strong>';
     }
 
-    // GitHub repository details
     const owner = 'nogeese-org';
     const repo = 'mirror';
-    
-    // Construct the API URL for contents
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${currentDir}`;
 
-    // Fetch the directory contents
     fetch(apiUrl)
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to load directory contents.');
-        }
+        if (!response.ok) throw new Error('Failed to load directory contents.');
         return response.json();
       })
       .then(data => {
-        // Clear loading message
         const contentEl = document.getElementById('content');
         contentEl.innerHTML = '';
-        // Create list to display items
         const ul = document.createElement('ul');
 
-        // Sort directories first then files (optional)
-        data.sort((a, b) => {
-          if (a.type === b.type) return a.name.localeCompare(b.name);
-          return a.type === 'dir' ? -1 : 1;
-        });
-
+        data.sort((a, b) => (a.type === b.type ? a.name.localeCompare(b.name) : a.type === 'dir' ? -1 : 1));
+        
         data.forEach(item => {
           const li = document.createElement('li');
           if (item.type === 'dir') {
-            // For directories, link to the same page with updated "dir" parameter
-            li.innerHTML = `<a href="?dir=${encodeURIComponent(currentDir ? currentDir + '/' + item.name : item.name)}">📁 ${item.name}</a>`;
-          } else if (item.type === 'file') {
-            // For files, link directly to the file URL for download
+            li.innerHTML = `<a href="?dir=${encodeURIComponent(item.path)}">📁 ${item.name}</a>`;
+          } else {
             li.innerHTML = `<a href="${item.download_url}" target="_blank">📄 ${item.name}</a>`;
           }
           ul.appendChild(li);
