@@ -6,3 +6,31 @@ And the branch for stable will be moved to another repo.
 Welcome! This mirror contains nogeese projects and their required files.
 
 You can browse it [here](https://mirror.leon8326.org/)!
+## Nogeese Linux
+### Repositories
+#### nogeese
+
+URL: https://mirror.leon8326.org/linux/nogeese/os/$arch
+
+Include: /etc/pacman.d/ng-os-mirrorlist
+
+Pacman Entry:
+
+```
+[nogeese]
+Include = /etc/pacman.d/ng-os-mirrorlist
+SigLevel = Optional TrustAll
+```
+#### bit
+
+URL: https://mirror.leon8326.org/linux/bit/os/$arch
+
+Include: /etc/pacman.d/ng-os-mirrorlist
+
+Pacman Entry:
+
+```
+[bit]
+Include = /etc/pacman.d/ng-os-mirrorlist
+SigLevel = Optional TrustAll
+```
