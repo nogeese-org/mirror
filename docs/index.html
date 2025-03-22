@@ -20,6 +20,8 @@
 
   <script>
     const BASE_DIR = 'docs'; // Set "docs" as the home directory
+    const GITHUB_API = 'https://api.github.com/repos/nogeese-org/mirror/contents/';
+    const MIRROR_URL = 'https://mirror.leon8326.org/';
     
     const params = new URLSearchParams(window.location.search);
     let currentDir = params.get('dir') || BASE_DIR;
@@ -47,31 +49,26 @@
       });
     }
 
-    const baseUrl = 'https://mirror.leon8326.org/'; // Use mirror.leon8326.org
-    const apiUrl = `${baseUrl}?dir=${encodeURIComponent(currentDir)}`; // Store browsing state in ?dir=
-
+    const apiUrl = `${GITHUB_API}${currentDir}`;
+    
     fetch(apiUrl)
       .then(response => {
         if (!response.ok) throw new Error('Failed to load directory contents.');
-        return response.text();
+        return response.json();
       })
-      .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const links = doc.querySelectorAll('a');
+      .then(data => {
         const contentEl = document.getElementById('content');
         contentEl.innerHTML = '';
         const ul = document.createElement('ul');
 
-        links.forEach(link => {
-          const name = link.textContent;
-          if (name === '../') return; // Prevent navigating outside "docs"
-          const path = `${currentDir}/${name}`;
+        data.forEach(item => {
+          const name = item.name;
+          const path = item.path;
           const li = document.createElement('li');
-          if (name.endsWith('/')) {
+          if (item.type === 'dir') {
             li.innerHTML = `<a href="?dir=${encodeURIComponent(path)}">📁 ${name}</a>`;
           } else {
-            li.innerHTML = `<a href="${baseUrl}${path}" target="_blank">📄 ${name}</a>`;
+            li.innerHTML = `<a href="${MIRROR_URL}${path}" target="_blank">📄 ${name}</a>`;
           }
           ul.appendChild(li);
         });
