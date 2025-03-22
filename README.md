@@ -10,7 +10,7 @@ You can browse it [here](https://mirror.leon8326.org/)!
 ### Repositories
 #### nogeese
 
-URL: https://mirror.leon8326.org/linux/nogeese/os/$arch
+URL: https://mirror.leon8326.org/linux/nogeese/os/
 
 Include: /etc/pacman.d/ng-os-mirrorlist
 
@@ -23,7 +23,7 @@ SigLevel = Optional TrustAll
 ```
 #### bit
 
-URL: https://mirror.leon8326.org/linux/bit/os/$arch
+URL: https://mirror.leon8326.org/linux/bit/os/
 
 Include: /etc/pacman.d/ng-os-mirrorlist
 
