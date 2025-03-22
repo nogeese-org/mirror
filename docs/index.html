@@ -68,7 +68,9 @@
           if (item.type === 'dir') {
             li.innerHTML = `<a href="?dir=${encodeURIComponent(path)}">📁 ${name}</a>`;
           } else {
-            li.innerHTML = `<a href="${MIRROR_URL}${path}" target="_blank">📄 ${name}</a>`;
+            // Remove "docs" from the path when constructing the file URL
+            const filePath = path.replace(`${BASE_DIR}/`, '');
+            li.innerHTML = `<a href="${MIRROR_URL}${filePath}" target="_blank">📄 ${name}</a>`;
           }
           ul.appendChild(li);
         });
