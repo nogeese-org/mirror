@@ -1,13 +1,18 @@
-# Nogeese Linux Mirror
+# UNDER CONSTRUCTION
+This mirror is being re-built from the ground up. The Old README url addresses wont work anymore.
+
+And the branch for stable will be moved to another repo.
+# Old README 
+## Nogeese Linux Mirror
 A mirror with repos exclusive for Nogeese Linux, alongside the Arch Linux repos.
 
 Nogeese Linux comes with it's repos.
-## What are the repos?
+### What are the repos?
 nogeese - Official repo for Nogeese Linux programs.
 
 bit - Handful utilities, you would normally not be able to install with pacman.
-## How to get these repos on Arch Linux?
-### nogeese
+### How to get these repos on Arch Linux?
+#### nogeese
 Even tho the nogeese repo was made for Nogeese Linux, you can still get it by editing the pacman config (/etc/pacman.conf):
 
 Before adding ANY repo run:
@@ -27,7 +32,7 @@ Server = https://raw.githubusercontent.com/nogeese-org/mirror/stable/nogeese/os/
 SigLevel = Optional TrustAll
 ```
 
-### bit
+#### bit
 The bit repo isn't made only for Nogeese Linux so you can just do the same:
 
 Open "/etc/pacman.conf" in a text editor and
@@ -40,7 +45,7 @@ Server = https://raw.githubusercontent.com/nogeese-org/mirror/stable/bit/os/$arc
 SigLevel = Optional TrustAll
 ```
 
-### What about Nogeese AUR?
+#### What about Nogeese AUR?
 Check [the AUR's README](https://github.com/leon8326-nogeese/aur/blob/main/README.md).
 
 ## As a developer, how can i upload a new package on this mirror?
@@ -78,7 +83,7 @@ And in the same directory click + > Upload files and drag and drop the .pkg.tar/
 
 Go to the home page of the fork and click "Contribute" follow instrustion on the screen, and wait...
 
-## What are the architectures and what are they based on?
+### What are the architectures and what are they based on?
 
 x86_64 - Based on [Arch Linux](https://archlinux.org)
 
