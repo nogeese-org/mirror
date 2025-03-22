@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mirror File Browser</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { font-size: 24px; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 8px 0; }
+    a { text-decoration: none; color: #0366d6; }
+    a:hover { text-decoration: underline; }
+    .breadcrumb { margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Mirror File Browser</h1>
+  <div class="breadcrumb" id="breadcrumb"></div>
+  <div id="content">Loading directory contents...</div>
+
+  <script>
+    // Parse the "dir" parameter from the URL, defaulting to an empty string (root)
+    const params = new URLSearchParams(window.location.search);
+    const currentDir = params.get('dir') || '';
+
+    // Build breadcrumb navigation
+    const breadcrumbEl = document.getElementById('breadcrumb');
+    if (currentDir) {
+      const parts = currentDir.split('/');
+      let path = '';
+      breadcrumbEl.innerHTML = '<a href="?">Home</a> / ';
+      parts.forEach((part, index) => {
+        path += (index === 0 ? part : '/' + part);
+        if (index < parts.length - 1) {
+          breadcrumbEl.innerHTML += `<a href="?dir=${encodeURIComponent(path)}">${part}</a> / `;
+        } else {
+          breadcrumbEl.innerHTML += `<strong>${part}</strong>`;
+        }
+      });
+    } else {
+      breadcrumbEl.innerHTML = '<strong>Home</strong>';
+    }
+
+    // GitHub repository details
+    const owner = 'nogeese-org';
+    const repo = 'mirror';
+    
+    // Construct the API URL for contents
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${currentDir}`;
+
+    // Fetch the directory contents
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to load directory contents.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Clear loading message
+        const contentEl = document.getElementById('content');
+        contentEl.innerHTML = '';
+        // Create list to display items
+        const ul = document.createElement('ul');
+
+        // Sort directories first then files (optional)
+        data.sort((a, b) => {
+          if (a.type === b.type) return a.name.localeCompare(b.name);
+          return a.type === 'dir' ? -1 : 1;
+        });
+
+        data.forEach(item => {
+          const li = document.createElement('li');
+          if (item.type === 'dir') {
+            // For directories, link to the same page with updated "dir" parameter
+            li.innerHTML = `<a href="?dir=${encodeURIComponent(currentDir ? currentDir + '/' + item.name : item.name)}">📁 ${item.name}</a>`;
+          } else if (item.type === 'file') {
+            // For files, link directly to the file URL for download
+            li.innerHTML = `<a href="${item.download_url}" target="_blank">📄 ${item.name}</a>`;
+          }
+          ul.appendChild(li);
+        });
+        contentEl.appendChild(ul);
+      })
+      .catch(error => {
+        document.getElementById('content').innerHTML = `<p>Error: ${error.message}</p>`;
+      });
+  </script>
+</body>
+</html>
