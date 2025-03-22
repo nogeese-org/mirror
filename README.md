@@ -12,6 +12,8 @@ You can browse it [here](https://mirror.leon8326.org/)!
 
 URL: https://mirror.leon8326.org/linux/nogeese/os/
 
+Web Interface URL: https://mirror.leon8326.org/?dir=docs%2Flinux%2Fnogeese%2Fos
+
 Include: /etc/pacman.d/ng-os-mirrorlist
 
 Pacman Entry:
@@ -24,6 +26,8 @@ SigLevel = Optional TrustAll
 #### bit
 
 URL: https://mirror.leon8326.org/linux/bit/os/
+
+Web Interface URL: https://mirror.leon8326.org/?dir=docs%2Flinux%2Fbit%2Fos
 
 Include: /etc/pacman.d/ng-os-mirrorlist
 
