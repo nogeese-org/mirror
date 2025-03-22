@@ -23,6 +23,11 @@
     
     const params = new URLSearchParams(window.location.search);
     let currentDir = params.get('dir') || BASE_DIR;
+    
+    // Prevent navigation outside "docs"
+    if (!currentDir.startsWith(BASE_DIR)) {
+      currentDir = BASE_DIR;
+    }
 
     // Breadcrumb navigation
     const breadcrumbEl = document.getElementById('breadcrumb');
@@ -42,28 +47,31 @@
       });
     }
 
-    const owner = 'nogeese-org';
-    const repo = 'mirror';
-    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${currentDir}`;
+    const baseUrl = 'https://mirror.leon8326.org/'; // Use mirror.leon8326.org instead of GitHub
+    const apiUrl = `${baseUrl}${currentDir}/`; 
 
     fetch(apiUrl)
       .then(response => {
         if (!response.ok) throw new Error('Failed to load directory contents.');
-        return response.json();
+        return response.text();
       })
-      .then(data => {
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const links = doc.querySelectorAll('a');
         const contentEl = document.getElementById('content');
         contentEl.innerHTML = '';
         const ul = document.createElement('ul');
 
-        data.sort((a, b) => (a.type === b.type ? a.name.localeCompare(b.name) : a.type === 'dir' ? -1 : 1));
-        
-        data.forEach(item => {
+        links.forEach(link => {
+          const name = link.textContent;
+          if (name === '../') return; // Prevent navigating outside "docs"
+          const path = `${currentDir}/${name}`;
           const li = document.createElement('li');
-          if (item.type === 'dir') {
-            li.innerHTML = `<a href="?dir=${encodeURIComponent(item.path)}">📁 ${item.name}</a>`;
+          if (name.endsWith('/')) {
+            li.innerHTML = `<a href="?dir=${encodeURIComponent(path)}">📁 ${name}</a>`;
           } else {
-            li.innerHTML = `<a href="${item.download_url}" target="_blank">📄 ${item.name}</a>`;
+            li.innerHTML = `<a href="${baseUrl}${path}" target="_blank">📄 ${name}</a>`;
           }
           ul.appendChild(li);
         });
