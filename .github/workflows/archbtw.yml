@@ -1,0 +1,39 @@
+name: Update Arch Mirror Database and Files
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/linux/**/*'
+
+jobs:
+  update-db-and-files:
+    runs-on: archlinux-latest  # Update to Arch Linux runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Process .db and .files for each subfolder in docs/linux
+        run: |
+          for folder in docs/linux/*/; do
+            # Check if the folder contains .db.tar.gz and .files.tar.gz
+            db_file="$folder/*.db.tar.gz"
+            files_file="$folder/*.files.tar.gz"
+            if [[ -f $db_file && -f $files_file ]]; then
+              # Create .db and .files from the .tar.gz files
+              repo-add "$folder/$(basename $folder).db" "$db_file"
+              mv "$db_file" "$folder/$(basename $folder).db.tar.gz"
+              mv "$files_file" "$folder/$(basename $folder).files.tar.gz"
+              echo "Created .db and .files for $folder"
+            fi
+          done
+
+      - name: Commit and push changes if any
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add docs/linux/*
+          git commit -m "Update .db and .files for new .tar.gz files"
+          git push origin main
